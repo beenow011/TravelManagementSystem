@@ -8,6 +8,8 @@ import Signup from "./pages/Signup.jsx";
 import { Provider } from "react-redux";
 import { store } from "./store/store.js";
 import Home from "./pages/Home.jsx";
+import Room from "./pages/Room.jsx";
+import Car from "./pages/Car.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -24,6 +26,14 @@ const router = createBrowserRouter([
       {
         path: "/signup",
         element: <Signup />,
+      },
+      {
+        path: "/rooms",
+        element: <Room />,
+      },
+      {
+        path: "/cars",
+        element: <Car />,
       },
     ],
   },

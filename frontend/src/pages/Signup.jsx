@@ -17,9 +17,16 @@ function Signup() {
     setError("");
     try {
       const userData = await axios.post("/api/user/createUser", data);
-
+      console.log(userData);
       if (userData) {
-        dispatch(login(userData?.data?.data));
+        const res = await axios.get("/api/user/getUser", {
+          params: {
+            userID: userData?.data?.data, // Assuming userID is the correct parameter name
+          },
+        });
+
+        dispatch(login(res?.data?.data[0]));
+        console.log("res", res?.data);
         navigate("/");
       }
       console.log(data);

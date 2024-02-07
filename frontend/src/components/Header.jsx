@@ -14,7 +14,7 @@ function Header() {
     navigate("/login");
   };
   return (
-    <div className="bg-gradient-to-r from-[#18305C] to-[#737DBB] p-4 flex justify-between shadow-lg shadow-black px-10">
+    <div className="bg-gradient-to-r from-[#2d677b] to-[#737DBB] p-4 flex justify-between shadow-lg shadow-black px-10">
       <div>
         <h1 className=" font-bold font-sans text-2xl text-[#F083BA]">
           Travel Now

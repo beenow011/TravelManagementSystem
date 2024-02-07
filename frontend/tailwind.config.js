@@ -15,6 +15,9 @@ export default {
         'home': "url('/src/assets/home.png')",
         'banner': "url('/src/assets/banner.png')",
         'sketch': "url('/src/assets/homeart.jpg')",
+        'hotel': "url('/src/assets/hotel.png')",
+        'dinocar': "url('/src/assets/dinocar.png')",
+        'elephant': "url('/src/assets/elephant.jpg')",
 
       }
     },

@@ -11,7 +11,7 @@ function Home() {
           and Car Rentals with Our Unified Solution!
         </h1>
       </div>
-      <div className="flex w-[80vw] mx-auto mt-10">
+      <div className="flex w-[80vw] mx-auto mt-10 ">
         <SmallHero />
         <BigHero />
       </div>
