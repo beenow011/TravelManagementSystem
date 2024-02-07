@@ -10,6 +10,9 @@ import { store } from "./store/store.js";
 import Home from "./pages/Home.jsx";
 import Room from "./pages/Room.jsx";
 import Car from "./pages/Car.jsx";
+import UserRoom from "./pages/UserRoom.jsx";
+import UserCar from "./pages/UserCar.jsx";
+import Auth from "./components/Auth.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -29,11 +32,36 @@ const router = createBrowserRouter([
       },
       {
         path: "/rooms",
-        element: <Room />,
+        element: (
+          <Auth authentication>
+            <Room />
+          </Auth>
+        ),
       },
       {
         path: "/cars",
-        element: <Car />,
+        element: (
+          <Auth authentication>
+            <Car />
+          </Auth>
+        ),
+      },
+      {
+        path: "/user/room",
+        element: (
+          <Auth authentication>
+            {" "}
+            <UserRoom />
+          </Auth>
+        ),
+      },
+      {
+        path: "/user/car",
+        element: (
+          <Auth authentication>
+            <UserCar />
+          </Auth>
+        ),
       },
     ],
   },

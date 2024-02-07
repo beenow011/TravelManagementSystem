@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div className=" bg-gradient-to-r  from-[#F083BA] to-[#D4B8E9]">
+    <div className=" bg-gradient-to-r  from-[#e6d5dd] to-[#9eb2e9]">
       <Header />
       <Outlet />
       <Footer />

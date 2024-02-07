@@ -15,8 +15,12 @@ function Header() {
   };
   return (
     <div className="bg-gradient-to-r from-[#2d677b] to-[#737DBB] p-4 flex justify-between shadow-lg shadow-black px-10">
-      <div>
-        <h1 className=" font-bold font-sans text-2xl text-[#F083BA]">
+      <div
+        onClick={() => {
+          navigate("/");
+        }}
+      >
+        <h1 className=" font-bold font-sans text-2xl text-[#F083BA] cursor-pointer">
           Travel Now
         </h1>
       </div>

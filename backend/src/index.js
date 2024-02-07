@@ -3,8 +3,9 @@ import dotenv from "dotenv"
 import express from "express";
 import mysql from 'mysql2';
 import cors from "cors";
-import { createUser, loginUser } from "./controller/users.controller.js";
-import { availableRooms, hotelList } from "./controller/roomBooking.controller.js";
+import { createUser, getUser, loginUser } from "./controller/users.controller.js";
+import { availableRooms, bookRoom, bookedRoom, hotelList } from "./controller/roomBooking.controller.js";
+import { availableCars, bookCar, rentalList } from "./controller/carBooking.controller.js";
 dotenv.config({
     path: './env'
 })
@@ -38,9 +39,17 @@ connection.connect((err) => {
 //auth
 app.post('/api/user/createUser', createUser)
 app.post('/api/user/loginUser', loginUser)
+app.get('/api/user/getUser', getUser)
 
 //room
 app.get('/api/hotel/fetchHotels', hotelList)
 app.get('/api/hotel/availableRoom', availableRooms)
+app.post('/api/hotel/bookRoom', bookRoom)
+app.get('/api/hotel/bookedRoom', bookedRoom)
+
+//cars
+app.get('/api/cars/fetchRental', rentalList)
+app.get('/api/cars/availableCars', availableCars)
+app.post('/api/cars/bookCars', bookCar)
 
 export default connection;

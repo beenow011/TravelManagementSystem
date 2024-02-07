@@ -74,4 +74,30 @@ const loginUser = async (req, res) => {
     }
 }
 
-export { createUser, loginUser }
+const getUser = async (req, res) => {
+    try {
+        const { userID } = req.query;
+        connection.query('SELECT * FROM Users where userID = ?', [userID], (err, result) => {
+            if (err) {
+                console.error("Error fetching user:", err);
+                throw new ApiError(500, "Failed to fetch database")
+            } else {
+
+
+                return res.status(200).json({
+                    success: true,
+                    data: result,
+                    message: "User fetched successfully"
+                });
+
+            }
+        })
+    } catch (err) {
+        return res.status(500).json({
+            success: false,
+            message: "Error fetching user",
+            error: err
+        });
+    }
+}
+export { createUser, loginUser, getUser }

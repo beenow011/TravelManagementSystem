@@ -3,7 +3,9 @@ import React, { useEffect, useState } from "react";
 import HotelCard from "../components/HotelCard";
 import RoomType from "../components/RoomType";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 function Room() {
+  const navigate = useNavigate();
   const userdata = useSelector((state) => state.userData);
   const [location, setLocation] = useState("Bangalore");
   const [hotels, setHotels] = useState();
@@ -13,26 +15,37 @@ function Room() {
   const [selectedRooms, setSelectedRooms] = useState();
   const [date, setDate] = useState();
   const [days, setDays] = useState();
+  const [roomOfSelectedType, setRoomOfSelectedType] = useState();
   const roomType = ["Deluxe", "Standard", "Suite"];
+  const [error, setError] = useState();
+  const [error2, setError2] = useState();
   const fetchHotels = async () => {
     try {
-      const hotelList = await axios.get("/api/hotel/fetchHotels", {
-        params: { location },
-      });
-      console.log(hotelList);
-      if (hotelList) {
-        setHotels(hotelList.data?.data);
+      setError("");
+      if (date && days && location) {
+        const hotelList = await axios.get("/api/hotel/fetchHotels", {
+          params: { location },
+        });
+        console.log(hotelList);
+        if (hotelList) {
+          setHotels(hotelList.data?.data);
+        }
+      } else {
+        setError("Required all fields");
       }
     } catch (err) {
       console.log(err.message);
     }
   };
   useEffect(() => {
+    setError("");
+
     if (hotelID && selectedRoomType) {
       axios
         .get("/api/hotel/availableRoom", {
           params: {
             hotelID,
+            bookingDate: date,
           },
         })
         .then((res) => setRooms(res?.data?.data))
@@ -43,8 +56,13 @@ function Room() {
 
   const bookRoom = async () => {
     try {
-      const res = await axios.post("/api/hotel/bookRoom", selectedRooms);
-      console.log(res);
+      if (selectedRooms) {
+        const res = await axios.post("/api/hotel/bookRoom", selectedRooms);
+        console.log(res);
+        navigate("/user/room");
+      } else {
+        setError2("Select the room");
+      }
     } catch (err) {
       console.log(err.message);
     }
@@ -96,6 +114,7 @@ function Room() {
             Search
           </button>
         </div>
+        {error && <p className="text-red-600 text-lg">{error}</p>}
         {hotels ? (
           <div>
             <h1 className="mt-4 text-2xl font-bold">Popular Hotels</h1>
@@ -110,7 +129,7 @@ function Room() {
                     }`}
                     onClick={() => setHotelID(hotel?.hotelID)} // Adjusted onClick handler
                   >
-                    <HotelCard {...hotel} />
+                    <HotelCard Name={hotel?.hotelNAme} />
                   </li>
                 ))}
             </ul>
@@ -128,7 +147,9 @@ function Room() {
                               ? " border border-black"
                               : null
                           }`}
-                          onClick={() => setRoomType(type)}
+                          onClick={() => {
+                            setRoomType(type);
+                          }}
                         >
                           <RoomType type={type} />
                         </li>
@@ -140,7 +161,7 @@ function Room() {
                         Select the Room
                       </p>
                       <ul className="flex gap-4 mt-4">
-                        {rooms &&
+                        {rooms ? (
                           rooms.map(
                             (room, i) =>
                               room.roomType === selectedRoomType && (
@@ -158,6 +179,7 @@ function Room() {
                                       hotelID,
                                       bookingDate: date,
                                       days,
+                                      price: days * room.price,
                                     })
                                   }
                                 >
@@ -169,10 +191,16 @@ function Room() {
                                   </p>
                                 </li>
                               )
-                          )}
+                          )
+                        ) : (
+                          <p>No rooms available.</p>
+                        )}
                       </ul>
                       <div className="mt-10">
                         <p className="text-2xl font-semibold">Book the room</p>
+                        {error2 && (
+                          <p className="text-red-600 text-lg">{error2}</p>
+                        )}
                         <button
                           className="p-3 bg-violet-900 text-white hover:bg-black ml-3 rounded-md"
                           onClick={bookRoom}
