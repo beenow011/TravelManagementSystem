@@ -13,6 +13,7 @@ import Car from "./pages/Car.jsx";
 import UserRoom from "./pages/UserRoom.jsx";
 import UserCar from "./pages/UserCar.jsx";
 import Auth from "./components/Auth.jsx";
+import UserBooking from "./pages/UserBooking.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -60,6 +61,14 @@ const router = createBrowserRouter([
         element: (
           <Auth authentication>
             <UserCar />
+          </Auth>
+        ),
+      },
+      {
+        path: "/user/bookings",
+        element: (
+          <Auth authentication>
+            <UserBooking />
           </Auth>
         ),
       },
