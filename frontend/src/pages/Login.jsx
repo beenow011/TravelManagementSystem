@@ -31,12 +31,12 @@ function Login() {
   return (
     <div className="flex  my-32 h-screen">
       <div className="w-96  text-white h-86    m-auto mt-4 bg-login bg-cover ">
-        <h1 className=" font-mono text-4xl shadow-lg shadow-black text-center pt-8 bg-[#F083BA]">
+        <h1 className=" font-mono text-4xl shadow-lg shadow-black text-center py-8 bg-[#F083BA] ">
           Log in
         </h1>
         <form
           action="submit"
-          className=" flex flex-col justify-center p-4 bg-black-600/30 text-black text-xl"
+          className=" flex flex-col justify-center p-4 bg-black/30 text-white text-xl"
         >
           <label
             htmlFor=""

@@ -73,19 +73,19 @@ function Car() {
   console.log("car", selectedCar);
   return (
     <div className="flex flex-col justify-center items-center">
-      <div className="bg-elephant bg-contain bg-no-repeat bg-blue-400 h-96 flex justify-center items-center text-4xl font-bold font-banner text-[#4f729a] w-[80vw] mt-10 shadow-lg shadow-black">
+      <div className="bg-elephant md:bg-contain bg-cover bg-no-repeat bg-blue-400 h-80 lg:h-96 flex j items-center text-4xl font-bold font-banner text-[#4f729a] w-[80vw] mt-10 shadow-lg shadow-black  justify-end">
         <h1 className="w-fit h-fit p-2 bg-white/70">
           Checkout Rental cars for reasonable price
         </h1>
       </div>
       <div className="bg-neutral-600/40 w-[80vw] mt-16  mb-10 p-4  shadow-md shadow-black  ">
-        <div className="flex">
+        <div className="flex flex-col xl:flex-row gap-4 xl:gap-1">
           <label className="text-2xl font-bold my-auto  text-[#2d677b]">
             Location
           </label>
           <select
             placeholder="Location"
-            className="ml-5 rounded-md p-2"
+            className="lg:ml-5 rounded-md p-2"
             onChange={(e) => setLocation(e.target.value)}
           >
             <option value="Bangalore">Bangalore</option>
@@ -93,24 +93,24 @@ function Car() {
             <option value="Chikkamagalur">Chikkamagalur</option>
             <option value="Mangalore">Mangalore</option>
           </select>
-          <label className="text-2xl ml-5 font-bold my-auto  text-[#2d677b]">
+          <label className="text-2xl lg:ml-5 font-bold my-auto  text-[#2d677b]">
             Date
           </label>
           <input
             type="date"
-            className="ml-5 rounded-md p-2"
+            className="lg:ml-5 rounded-md p-2"
             onChange={(e) => setDate(e.target.value)}
           />
-          <label className="text-2xl ml-5 font-bold my-auto  text-[#2d677b]">
+          <label className="text-2xl lg:ml-5 font-bold my-auto  text-[#2d677b]">
             Days
           </label>
           <input
             type="number"
-            className="ml-5 rounded-md p-2"
+            className="lg:ml-5 rounded-md p-2"
             onChange={(e) => setDays(e.target.value)}
           />
           <button
-            className="p-3 bg-violet-900 text-white hover:bg-black ml-3 rounded-md"
+            className="p-3 bg-violet-900 text-white hover:bg-black lg:ml-3 rounded-md"
             onClick={fetchRentals}
           >
             Search
@@ -160,7 +160,7 @@ function Car() {
                             });
                           }}
                         >
-                          <div className="p-10 bg-slate-500/50 hover:bg-slate-500/60">
+                          <div className="p-4 md:p-6 lg:p-10 bg-slate-500/50 hover:bg-slate-500/60 ">
                             <h1 className="text-xl font-semibold cursor-pointer">
                               {car?.carModel}
                             </h1>
@@ -176,7 +176,7 @@ function Car() {
                         <p className="text-red-600 text-lg">{error2}</p>
                       )}
                       <button
-                        className="p-3 bg-violet-900 text-white hover:bg-black ml-3 rounded-md"
+                        className="p-3 mt-3 bg-violet-900 text-white hover:bg-black  rounded-md"
                         onClick={bookCar}
                       >
                         Book

@@ -38,12 +38,12 @@ function Signup() {
   console.log("error", error);
   return (
     <div className="w-96 my-32 text-white border rounded-md m-auto  bg-home bg-cover ">
-      <h1 className="text-white font-mono text-4xl text-center pt-8  bg-[#F083BA]/80">
+      <h1 className="text-white font-mono text-4xl text-center py-8  bg-[#F083BA]/80">
         Sign up
       </h1>
       <form
         action="submit"
-        className=" flex flex-col justify-center p-4 text-black text-xl"
+        className=" flex flex-col justify-center p-4 text-bwhite bg-black/30 text-xl"
       >
         <label
           htmlFor=""

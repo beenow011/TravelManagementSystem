@@ -18,15 +18,21 @@ function UserRoom() {
       .then((res) => setRooms(res?.data?.data))
       .catch((err) => console.log(err));
   }, []);
+  const handleBookingCanceled = (bookingID) => {
+    setRooms(rooms.filter((room) => room.bookingID !== bookingID));
+  };
   console.log(rooms);
   return (
     <div className="w-[60vw] mx-auto m-5">
       <h1 className="text-3xl font-bold text-[#2d677b] mt-5">Booked Rooms</h1>
-      <ul className="flex flex-col gap-5">
+      <ul className="flex flex-col gap-5 my-10">
         {rooms &&
           rooms.map((room) => (
             <li>
-              <BookedRoomComp {...room} />
+              <BookedRoomComp
+                {...room}
+                onBookingCanceled={handleBookingCanceled}
+              />
             </li>
           ))}
       </ul>

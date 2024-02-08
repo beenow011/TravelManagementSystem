@@ -27,11 +27,21 @@ function Header() {
       <div className="">
         {auth ? (
           <ul className="flex gap-7  cursor-pointer ">
-            <li className="hover:text-[#BD81BF] flex justify-center flex-col items-center">
+            <li
+              className="hover:text-[#BD81BF] flex justify-center flex-col items-center"
+              onClick={() => {
+                navigate("/rooms");
+              }}
+            >
               <FaHotel />
               <h1>Hotels</h1>
             </li>
-            <li className="hover:text-[#BD81BF] flex justify-center flex-col items-center">
+            <li
+              className="hover:text-[#BD81BF] flex justify-center flex-col items-center"
+              onClick={() => {
+                navigate("/cars");
+              }}
+            >
               <AiFillCar />
               <h1>Car Rentals</h1>
             </li>

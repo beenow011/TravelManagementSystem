@@ -71,19 +71,19 @@ function Room() {
   console.log("roooms", selectedRooms);
   return (
     <div className="flex flex-col justify-center items-center">
-      <div className="bg-sketch bg-contain h-96 flex justify-center items-center text-4xl font-bold font-banner text-[#4f729a] w-[80vw] mt-10 shadow-lg shadow-black">
+      <div className="bg-sketch bg-contain h-80 md:h-96 flex justify-center items-center text-4xl font-bold font-banner text-[#4f729a] w-[80vw] mt-10 shadow-lg shadow-black">
         <h1 className="w-fit h-fit p-2 bg-white/70">
           Checkout rooms for reasonable price
         </h1>
       </div>
       <div className="bg-neutral-600/40 w-[80vw] mt-16  mb-10 p-4  shadow-md shadow-black  ">
-        <div className="flex">
+        <div className="flex flex-col xl:flex-row gap-4 xl:gap-1">
           <label className="text-2xl font-bold my-auto  text-[#2d677b]">
             Location
           </label>
           <select
             placeholder="Location"
-            className="ml-5 rounded-md p-2"
+            className="lg:ml-5 rounded-md p-2"
             onChange={(e) => setLocation(e.target.value)}
           >
             <option value="Bangalore">Bangalore</option>
@@ -91,24 +91,24 @@ function Room() {
             <option value="Chikkamagalur">Chikkamagalur</option>
             <option value="Mangalore">Mangalore</option>
           </select>
-          <label className="text-2xl ml-5 font-bold my-auto  text-[#2d677b]">
+          <label className="text-2xl lg:ml-5 font-bold my-auto  text-[#2d677b]">
             Date
           </label>
           <input
             type="date"
-            className="ml-5 rounded-md p-2"
+            className="lg:ml-5 rounded-md p-2"
             onChange={(e) => setDate(e.target.value)}
           />
-          <label className="text-2xl ml-5 font-bold my-auto  text-[#2d677b]">
+          <label className="text-2xl lg:ml-5 font-bold my-auto  text-[#2d677b]">
             Days
           </label>
           <input
             type="number"
-            className="ml-5 rounded-md p-2"
+            className="lg:ml-5 rounded-md p-2"
             onChange={(e) => setDays(e.target.value)}
           />
           <button
-            className="p-3 bg-violet-900 text-white hover:bg-black ml-3 rounded-md"
+            className="p-3 bg-violet-900 text-white hover:bg-black lg:ml-3 rounded-md"
             onClick={fetchHotels}
           >
             Search
@@ -129,7 +129,7 @@ function Room() {
                     }`}
                     onClick={() => setHotelID(hotel?.hotelID)} // Adjusted onClick handler
                   >
-                    <HotelCard Name={hotel?.hotelNAme} />
+                    <HotelCard Name={hotel?.hotelName} />
                   </li>
                 ))}
             </ul>
@@ -137,7 +137,7 @@ function Room() {
               {hotelID ? (
                 <div>
                   <p className="text-2xl font-semibold">Select the Room type</p>
-                  <ul className="flex gap-4 mt-3">
+                  <ul className="flex gap-4 mt-3 flex-wrap">
                     {hotelID &&
                       roomType.map((type, i) => (
                         <li
@@ -160,7 +160,7 @@ function Room() {
                       <p className="text-2xl font-semibold mt-4">
                         Select the Room
                       </p>
-                      <ul className="flex gap-4 mt-4">
+                      <ul className="flex gap-4 mt-4 flex-wrap">
                         {rooms ? (
                           rooms.map(
                             (room, i) =>
@@ -202,7 +202,7 @@ function Room() {
                           <p className="text-red-600 text-lg">{error2}</p>
                         )}
                         <button
-                          className="p-3 bg-violet-900 text-white hover:bg-black ml-3 rounded-md"
+                          className="p-3 bg-violet-900 text-white hover:bg-black  mt-4 rounded-md"
                           onClick={bookRoom}
                         >
                           Book
