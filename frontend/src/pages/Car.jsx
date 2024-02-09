@@ -111,6 +111,7 @@ function Car() {
             type="date"
             className="lg:ml-5 rounded-md p-2"
             onChange={(e) => setDate(e.target.value)}
+            min={new Date().toISOString().split("T")[0]}
           />
           <label className="text-2xl lg:ml-5 font-bold my-auto  text-[#72a4b4]">
             Days
