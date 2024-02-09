@@ -18,25 +18,25 @@ function SmallHero() {
   // console.log("userID", userID);
   return (
     <div className="md:flex-2  lg:h-96 lg:w-[17vw] m-3 bg-neutral-600/40 shadow-lg shadow-black rounded-md  p-4">
-      <h1 className="text-3xl font-bold text-[#2d677b] mt-5">
+      <h1 className="text-3xl font-bold text-[#66b0c9] mt-5">
         Hi! {userData?.username}
       </h1>
-      <h1 className="text-xl font-semibold ">Your Bookings</h1>
+      <h1 className="text-xl font-semibold text-white ">Your Bookings</h1>
       <div className="w-full flex flex-col h-3/4 gap-2 text-2xl text-white font-bold ">
         <div
           className="bg-slate-600/50 hover:shadow-lg hover:border 
-        p-3 rounded-md shadow-black flex-1 transition text-[#d9c242] flex justify-center gap-2 items-center cursor-pointer"
+        p-3 rounded-md shadow-black flex-1 transition text-[#f5e380] flex justify-center gap-2 items-center cursor-pointer"
           onClick={() => navigate("/user/room")}
         >
-          <FaHotel className="text-black text-3xl" />
+          <FaHotel className="text-white text-3xl" />
           Room Bookings
         </div>
         <div
           className="bg-slate-600/50 hover:shadow-lg hover:border 
-        p-3 rounded-md shadow-black flex-1 transition text-[#d9c242] flex justify-center gap-2 items-center cursor-pointer"
+        p-3 rounded-md shadow-black flex-1 transition text-[#f5e380] flex justify-center gap-2 items-center cursor-pointer"
           onClick={() => navigate("/user/car")}
         >
-          <AiFillCar className="text-black text-3xl" />
+          <AiFillCar className="text-white text-3xl" />
           Rental Bookings
         </div>
       </div>

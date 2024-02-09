@@ -29,8 +29,8 @@ function Login() {
     }
   };
   return (
-    <div className="flex  my-32 h-screen">
-      <div className="w-96  text-white h-86    m-auto mt-4 bg-login bg-cover ">
+    <div className="flex  my-24 h-screen">
+      <div className="w-96  text-white h-86    m-auto mt-4 bg-doodle bg-cover ">
         <h1 className=" font-mono text-4xl shadow-lg shadow-black text-center py-8 bg-[#F083BA] ">
           Log in
         </h1>

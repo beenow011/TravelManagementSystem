@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <div className="bg-gradient-to-r from-[#2d677b] to-[#737DBB]  text-white">
+    <div className="bg-white/30  text-black">
       <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
@@ -61,7 +61,7 @@ function Footer() {
         <div className="sm:flex sm:items-center sm:justify-between">
           <span className="text-sm  sm:text-center">
             © 2023
-            <a href="">beenow011</a>. All Rights Reserved.
+            <a href="">DBMS Project</a>.
           </span>
           <div className="flex mt-4 space-x-5 sm:justify-center sm:mt-0">
             <Link to="/" className="flex items-center">

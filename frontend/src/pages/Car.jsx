@@ -69,18 +69,29 @@ function Car() {
       console.log(err.message);
     }
   };
-
+  const carImage = [
+    "bg-camry",
+    "bg-civic",
+    "bg-mustang",
+    "bg-cruze",
+    "bg-bmw",
+    "bg-audi",
+    "bg-benz",
+    "bg-vw",
+    "bg-tesla",
+    "bg-nissan",
+  ];
   console.log("car", selectedCar);
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center items-center text-white">
       <div className="bg-elephant md:bg-contain bg-cover bg-no-repeat bg-blue-400 h-80 lg:h-96 flex j items-center text-4xl font-bold font-banner text-[#4f729a] w-[80vw] mt-10 shadow-lg shadow-black  justify-end">
         <h1 className="w-fit h-fit p-2 bg-white/70">
           Checkout Rental cars for reasonable price
         </h1>
       </div>
       <div className="bg-neutral-600/40 w-[80vw] mt-16  mb-10 p-4  shadow-md shadow-black  ">
-        <div className="flex flex-col xl:flex-row gap-4 xl:gap-1">
-          <label className="text-2xl font-bold my-auto  text-[#2d677b]">
+        <div className="flex flex-col xl:flex-row gap-4 xl:gap-1 text-black">
+          <label className="text-2xl font-bold my-auto  text-[#72a4b4]">
             Location
           </label>
           <select
@@ -93,7 +104,7 @@ function Car() {
             <option value="Chikkamagalur">Chikkamagalur</option>
             <option value="Mangalore">Mangalore</option>
           </select>
-          <label className="text-2xl lg:ml-5 font-bold my-auto  text-[#2d677b]">
+          <label className="text-2xl lg:ml-5 font-bold my-auto  text-[#72a4b4]">
             Date
           </label>
           <input
@@ -101,7 +112,7 @@ function Car() {
             className="lg:ml-5 rounded-md p-2"
             onChange={(e) => setDate(e.target.value)}
           />
-          <label className="text-2xl lg:ml-5 font-bold my-auto  text-[#2d677b]">
+          <label className="text-2xl lg:ml-5 font-bold my-auto  text-[#72a4b4]">
             Days
           </label>
           <input
@@ -139,7 +150,7 @@ function Car() {
               {agencyID ? (
                 <div>
                   <p className="text-2xl font-semibold">Select the Car</p>
-                  <ul className="flex gap-4 mt-3 flex-wrap">
+                  <ul className="flex gap-4 mt-3 flex-wrap md:flex-nowrap md:overflow-scroll">
                     {cars &&
                       cars.map((car, i) => (
                         <li
@@ -160,11 +171,14 @@ function Car() {
                             });
                           }}
                         >
-                          <div className="p-4 md:p-6 lg:p-10 bg-slate-500/50 hover:bg-slate-500/60 ">
-                            <h1 className="text-xl font-semibold cursor-pointer">
-                              {car?.carModel}
-                            </h1>
-                            <p className="cursor-pointer">Rate: ₹{car?.rate}</p>
+                          <div
+                            className={`p-4 md:p-6 lg:h-64 lg:w-96 lg:p-10 ${
+                              carImage[car?.carID - 1]
+                            } bg-cover hover:bg-slate-500/60 flex justify-end items-start`}
+                          >
+                            <p className="cursor-pointer text-white bg-black/50 p-2 w-fit my-auto rounded-md">
+                              Rate: ₹{car?.rate}
+                            </p>
                           </div>
                         </li>
                       ))}

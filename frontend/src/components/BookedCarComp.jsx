@@ -58,7 +58,9 @@ function BookedCarComp({
             className="flex flex-col justify-end items-center h-full group"
             onClick={cancelBooking}
           >
-            <p className=" font-semibold cursor-default">Cancel Booking</p>
+            <p className=" font-semibold text-white cursor-default">
+              Cancel Booking
+            </p>
             <MdDelete
               size={46}
               className="bg-red-600 rounded-s-md group-hover:bg-red-700"

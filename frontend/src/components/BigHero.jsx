@@ -5,8 +5,8 @@ import hotel from "../assets/hotel.png";
 function BigHero() {
   const navigate = useNavigate();
   return (
-    <div className="md:flex-1  lg:h-96 lg:w-[57vw] m-3 bg-neutral-600/40 shadow-lg shadow-black rounded-md  p-3">
-      <h1 className="text-3xl font-bold mt-5 text-[#962d41]">
+    <div className="md:flex-1  lg:h-96 lg:w-[57vw] m-3 text-white bg-neutral-600/40 shadow-lg shadow-black rounded-md  p-3">
+      <h1 className="text-3xl font-bold mt-5 text-[#d47f8f]">
         Discover unbeatable deals on rentals and stays!
       </h1>
       <div className="flex flex-col lg:flex-row justify-center items-center mt-10 gap-10">

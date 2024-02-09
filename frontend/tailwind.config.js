@@ -31,7 +31,8 @@ export default {
         'nissan': "url('/src/assets/nissan.png')",
         'tesla': "url('/src/assets/tesla.png')",
         'vw': "url('/src/assets/vw.png')",
-
+        'doodle': "url('/src/assets/314.jpg')",
+        'car': "url('/src/assets/car.jpg')",
       }
     },
   },

@@ -70,15 +70,15 @@ function Room() {
 
   console.log("roooms", selectedRooms);
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center text-white items-center">
       <div className="bg-sketch bg-contain h-80 md:h-96 flex justify-center items-center text-4xl font-bold font-banner text-[#4f729a] w-[80vw] mt-10 shadow-lg shadow-black">
         <h1 className="w-fit h-fit p-2 bg-white/70">
           Checkout rooms for reasonable price
         </h1>
       </div>
-      <div className="bg-neutral-600/40 w-[80vw] mt-16  mb-10 p-4  shadow-md shadow-black  ">
-        <div className="flex flex-col xl:flex-row gap-4 xl:gap-1">
-          <label className="text-2xl font-bold my-auto  text-[#2d677b]">
+      <div className="bg-neutral-600/40 w-[80vw] mt-16  mb-10 p-4   shadow-md shadow-black  ">
+        <div className="flex flex-col xl:flex-row gap-4 xl:gap-1 text-black">
+          <label className="text-2xl font-bold my-auto  text-[#6b9aaa]">
             Location
           </label>
           <select
@@ -91,7 +91,7 @@ function Room() {
             <option value="Chikkamagalur">Chikkamagalur</option>
             <option value="Mangalore">Mangalore</option>
           </select>
-          <label className="text-2xl lg:ml-5 font-bold my-auto  text-[#2d677b]">
+          <label className="text-2xl lg:ml-5 font-bold my-auto  text-[#6b9aaa]">
             Date
           </label>
           <input
@@ -99,7 +99,7 @@ function Room() {
             className="lg:ml-5 rounded-md p-2"
             onChange={(e) => setDate(e.target.value)}
           />
-          <label className="text-2xl lg:ml-5 font-bold my-auto  text-[#2d677b]">
+          <label className="text-2xl lg:ml-5 font-bold my-auto  text-[#6b9aaa]">
             Days
           </label>
           <input

@@ -47,7 +47,7 @@ function BookedRoomComp({
         </div>
         <div className="flex justify-between gap-5" onClick={cancelBooking}>
           <div className="flex flex-col justify-end items-center h-full group">
-            <p className=" font-semibold cursor-default sm:opacity-100 opacity-0">
+            <p className=" font-semibold text-white cursor-default sm:opacity-100 opacity-0">
               Cancel Booking
             </p>
             <MdDelete

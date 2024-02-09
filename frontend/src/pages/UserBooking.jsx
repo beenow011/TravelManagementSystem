@@ -19,7 +19,7 @@ function UserBooking() {
   }, [userID]);
   console.log(booking);
   return (
-    <div className="w-[80vw] mx-auto p-4">
+    <div className="w-[80vw] mx-auto p-4 text-white mb-10">
       <h1 className="text-3xl font-bold text-[#2d677b] my-5">Your Bookings</h1>
       <div>
         <div className=" flex  h-3/4 gap-2 text-2xl text-white font-bold ">
@@ -46,24 +46,24 @@ function UserBooking() {
             Hey {booking?.username}, checkout the summary of your bookings.
           </p>
           <div className="flex flex-wrap gap-5 m-3">
-            <div className="bg-white/50 p-3 rounded-md">
+            <div className="bg-slate-600/50 mb-10 p-3 rounded-md">
               <b>Total rooms booked:</b>
               <p>{booking?.numberOfRoomBookings}</p>
             </div>
-            <div className="bg-white/50 p-3 rounded-md">
+            <div className="bg-slate-600/50 mb-10 p-3 rounded-md">
               <b>Total room price:</b>
               <p className="text-green-600">₹{booking?.totalRoomPrice}</p>
             </div>
-            <div className="bg-white/50 p-3 rounded-md">
+            <div className="bg-slate-600/50 mb-10 p-3 rounded-md">
               <b>Total cars booked:</b>
               <p className="">{booking?.numberOfCarBookings}</p>
             </div>
-            <div className="bg-white/50 p-3 rounded-md">
+            <div className="bg-slate-600/50 mb-10 p-3 rounded-md">
               <b>Total car price:</b>
               <p className="text-green-600">₹{booking?.totalCarPrice}</p>
             </div>
           </div>
-          <div className="bg-white/50 p-5 rounded-md">
+          <div className="bg-slate-600/50 mb-10 p-5 rounded-md">
             <b>Overall price:</b>
             <p className="text-green-600">₹{booking?.totalBookingPrice}</p>
           </div>
