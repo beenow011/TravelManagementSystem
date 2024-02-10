@@ -130,5 +130,32 @@ const bookedRoom = async (req, res) => {
     }
 }
 
+const cancelBookingRooms = async (req, res) => {
+    try {
+        const { bookingID } = req.body;
+        connection.query('DELETE FROM RoomBooking WHERE bookingID = ?', [bookingID], (err, result) => {
+            if (err) {
 
-export { hotelList, availableRooms, bookRoom, bookedRoom }
+                return res.status(500).json({
+                    success: false,
+                    message: "Failed to cancel booking",
+                    error: err
+                });
+            }
+            return res.status(200).json({
+                success: true,
+                data: result,
+                message: "Room booking canceled successfully"
+            });
+        });
+    } catch (err) {
+        // console.error("Error canceling booked cars:", err);
+        return res.status(500).json({
+            success: false,
+            message: "Error canceling booked Rooms",
+            error: err
+        });
+    }
+};
+
+export { hotelList, availableRooms, bookRoom, bookedRoom, cancelBookingRooms }

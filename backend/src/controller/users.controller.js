@@ -100,4 +100,56 @@ const getUser = async (req, res) => {
         });
     }
 }
-export { createUser, loginUser, getUser }
+
+const userBookings = async (req, res) => {
+    try {
+        const { userID } = req.body;
+        console.log(userID)
+        // First, create or replace the view
+        connection.query(`CREATE OR REPLACE VIEW UserBookings AS
+        SELECT
+            u.userID,
+            u.email,
+            u.username,
+            COUNT(DISTINCT rb.bookingID) AS numberOfRoomBookings,
+            SUM(rb.price) AS totalRoomPrice,
+            COUNT(DISTINCT cb.bookingID) AS numberOfCarBookings,
+            SUM(cb.price) AS totalCarPrice,
+            SUM(rb.price) + SUM(cb.price) AS totalBookingPrice
+        FROM
+            Users u
+        LEFT JOIN RoomBooking rb ON u.userID = rb.userID
+        LEFT JOIN CarBooking cb ON u.userID = cb.userID
+        GROUP BY
+            u.userID;
+         
+        `, (err, result) => {
+            if (err) {
+                console.error("Error creating or replacing UserBookings view:", err);
+                throw new ApiError(500, "Failed to create or replace UserBookings view");
+            } else {
+                // Once the view is created or replaced, select data from the view
+                connection.query('SELECT * FROM UserBookings WHERE userID = ?;', [userID], (err, result) => {
+                    if (err) {
+                        console.error("Error fetching user bookings:", err);
+                        throw new ApiError(500, "Failed to fetch user bookings");
+                    } else {
+                        return res.status(200).json({
+                            success: true,
+                            data: result,
+                            message: "User bookings fetched successfully"
+                        });
+                    }
+                });
+            }
+        });
+    } catch (err) {
+        return res.status(500).json({
+            success: false,
+            message: "Error fetching user bookings",
+            error: err
+        });
+    }
+};
+
+export { createUser, loginUser, getUser, userBookings }

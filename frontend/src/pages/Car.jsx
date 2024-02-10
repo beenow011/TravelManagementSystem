@@ -54,7 +54,6 @@ function Car() {
     }
   }, [agencyID]);
   console.log(cars);
-  // Include selectedRoomType in the dependency array
 
   const bookCar = async () => {
     try {

@@ -3,9 +3,9 @@ import dotenv from "dotenv"
 import express from "express";
 import mysql from 'mysql2';
 import cors from "cors";
-import { createUser, getUser, loginUser } from "./controller/users.controller.js";
-import { availableRooms, bookRoom, bookedRoom, hotelList } from "./controller/roomBooking.controller.js";
-import { availableCars, bookCar, rentalList } from "./controller/carBooking.controller.js";
+import { createUser, getUser, loginUser, userBookings } from "./controller/users.controller.js";
+import { availableRooms, bookRoom, bookedRoom, cancelBookingRooms, hotelList } from "./controller/roomBooking.controller.js";
+import { availableCars, bookCar, bookedCar, cancelBooking, rentalList } from "./controller/carBooking.controller.js";
 dotenv.config({
     path: './env'
 })
@@ -40,16 +40,21 @@ connection.connect((err) => {
 app.post('/api/user/createUser', createUser)
 app.post('/api/user/loginUser', loginUser)
 app.get('/api/user/getUser', getUser)
+app.post('/api/user/userBooking', userBookings)
 
 //room
 app.get('/api/hotel/fetchHotels', hotelList)
 app.get('/api/hotel/availableRoom', availableRooms)
 app.post('/api/hotel/bookRoom', bookRoom)
 app.get('/api/hotel/bookedRoom', bookedRoom)
+app.post('/api/hotel/cancelBooking', cancelBookingRooms)
+
 
 //cars
 app.get('/api/cars/fetchRental', rentalList)
 app.get('/api/cars/availableCars', availableCars)
 app.post('/api/cars/bookCars', bookCar)
+app.get('/api/cars/bookedCars', bookedCar)
+app.post('/api/cars/cancelBooking', cancelBooking)
 
 export default connection;

@@ -89,5 +89,75 @@ const bookCar = async (req, res) => {
     }
 }
 
+const bookedCar = async (req, res) => {
+    try {
+        const { userID } = req.query;
+        connection.query(`SELECT 
+        cb.bookingID,
+        cb.bookingDate,
+        cb.days,
+        cb.price,
+        a.agencyName,
+        a.agencyLocation,
+        c.carID,
+        c.carModel
+    FROM 
+        CarBooking cb
+    JOIN 
+        Car c ON cb.carID = c.carID
+    JOIN 
+        RentalAgency a ON cb.agencyID = a.agencyID
+    WHERE 
+        cb.userID = ?;`, [userID],
+            (err, result) => {
+                if (err) {
 
-export { rentalList, availableCars, bookCar }
+                    throw new ApiError(500, "Failed to fetch  database")
+                } else {
+                    return res.status(200).json({
+                        success: true,
+                        data: result,
+                        message: "cars fetched successfully"
+                    });
+
+                }
+            })
+    } catch (err) {
+        return res.status(500).json({
+            success: false,
+            message: "Error fetching booked cars",
+            error: err
+        });
+    }
+}
+
+const cancelBooking = async (req, res) => {
+    try {
+        const { bookingID } = req.body;
+        connection.query('DELETE FROM CarBooking WHERE bookingID = ?', [bookingID], (err, result) => {
+            if (err) {
+                console.error("Error canceling booked cars:", err);
+                return res.status(500).json({
+                    success: false,
+                    message: "Failed to cancel booking",
+                    error: err
+                });
+            }
+            return res.status(200).json({
+                success: true,
+                data: result,
+                message: "Car booking canceled successfully"
+            });
+        });
+    } catch (err) {
+        console.error("Error canceling booked cars:", err);
+        return res.status(500).json({
+            success: false,
+            message: "Error canceling booked cars",
+            error: err
+        });
+    }
+};
+
+
+export { rentalList, availableCars, bookCar, bookedCar, cancelBooking }
