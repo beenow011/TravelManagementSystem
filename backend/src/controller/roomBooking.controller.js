@@ -66,19 +66,20 @@ const availableRooms = async (req, res) => {
 const bookRoom = async (req, res) => {
     try {
         const { userID, RoomID, hotelID, bookingDate, days, price } = req.body;
-        connection.query('INSERT INTO RoomBooking (userID,roomID,hotelID,bookingDate,days,price) values (?,?,?,?,?,?);', [userID, RoomID, hotelID, bookingDate, days, price], (err, result) => {
-            if (err) {
+        connection.query('INSERT INTO RoomBooking (userID,roomID,hotelID,bookingDate,days,price) values (?,?,?,?,?,?);',
+            [userID, RoomID, hotelID, bookingDate, days, price], (err, result) => {
+                if (err) {
 
-                throw new ApiError(500, "Failed to fetch  database")
-            } else {
-                return res.status(200).json({
-                    success: true,
-                    data: result,
-                    message: "room booked successfully"
-                });
+                    throw new ApiError(500, "Failed to fetch  database")
+                } else {
+                    return res.status(200).json({
+                        success: true,
+                        data: result,
+                        message: "room booked successfully"
+                    });
 
-            }
-        })
+                }
+            })
     } catch (err) {
         return res.status(500).json({
             success: false,
@@ -159,3 +160,4 @@ const cancelBookingRooms = async (req, res) => {
 };
 
 export { hotelList, availableRooms, bookRoom, bookedRoom, cancelBookingRooms }
+

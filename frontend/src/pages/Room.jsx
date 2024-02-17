@@ -188,7 +188,7 @@ function Room() {
                                     Room no: {room.RoomID}{" "}
                                   </h1>{" "}
                                   <p className="cursor-pointer">
-                                    Price: ${room.price}
+                                    Price: ₹{room.price}
                                   </p>
                                 </li>
                               )

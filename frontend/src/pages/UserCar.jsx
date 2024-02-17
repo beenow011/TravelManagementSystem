@@ -24,11 +24,11 @@ function UserCar() {
   };
   console.log(cars);
   return (
-    <div className="w-[60vw] mx-auto m-5">
+    <div className="w-[60vw] mx-auto min-h-screen m-5">
       <h1 className="text-3xl font-bold text-[#2d677b] mt-5">Booked Cars</h1>
       {cars && cars.length === 0 ? (
         <p className="text-white font-bold p-3 text-2xl">
-          You have booked to cars{" "}
+          You have booked no cars{" "}
         </p>
       ) : (
         <ul className="flex flex-col gap-5 my-10">

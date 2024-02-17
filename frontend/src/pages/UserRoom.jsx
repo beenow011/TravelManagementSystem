@@ -23,11 +23,11 @@ function UserRoom() {
   };
   console.log(rooms);
   return (
-    <div className="w-[60vw] mx-auto m-5">
+    <div className="w-[60vw] mx-auto m-5 min-h-screen">
       <h1 className="text-3xl font-bold text-[#2d677b] mt-5">Booked Rooms</h1>
       {rooms && rooms.length === 0 ? (
         <p className="text-white font-bold p-3 text-2xl">
-          You have booked to Rooms{" "}
+          You have booked no Rooms{" "}
         </p>
       ) : (
         <ul className="flex flex-col gap-5 my-10">
