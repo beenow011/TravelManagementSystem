@@ -126,7 +126,7 @@ function Room() {
                   <li
                     key={hotel?.id}
                     className={`${
-                      hotelID === hotel.hotelID ? " border border-black" : null
+                      hotelID === hotel.hotelID ? " border border-white" : null
                     }`}
                     onClick={() => setHotelID(hotel?.hotelID)} // Adjusted onClick handler
                   >
@@ -145,7 +145,7 @@ function Room() {
                           key={i}
                           className={`${
                             type === selectedRoomType
-                              ? " border border-black"
+                              ? " border border-white"
                               : null
                           }`}
                           onClick={() => {
@@ -170,7 +170,7 @@ function Room() {
                                   key={i}
                                   className={`bg-slate-500/50 hover:bg-slate-500/60 p-4 ${
                                     selectedRooms?.RoomID === room.RoomID
-                                      ? " border border-black"
+                                      ? " border border-white"
                                       : null
                                   }`}
                                   onClick={() =>

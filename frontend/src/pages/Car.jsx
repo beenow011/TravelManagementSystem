@@ -138,7 +138,7 @@ function Car() {
                   <li
                     key={ren?.agencyID}
                     className={`${
-                      agencyID === ren?.agencyID ? " border border-black" : null
+                      agencyID === ren?.agencyID ? " border border-white" : null
                     }`}
                     onClick={() => setAgencyID(ren?.agencyID)}
                   >
@@ -157,7 +157,7 @@ function Car() {
                           key={i}
                           className={`${
                             car.carID === selectedCar?.carID
-                              ? " border border-black"
+                              ? " border border-white"
                               : null
                           }`}
                           onClick={() => {

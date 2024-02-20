@@ -30,6 +30,7 @@ const rentalList = async (req, res) => {
     }
 }
 
+
 const availableCars = async (req, res) => {
     try {
         const { agencyID, bookingDate } = req.query;

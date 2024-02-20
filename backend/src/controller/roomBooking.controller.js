@@ -131,6 +131,7 @@ const bookedRoom = async (req, res) => {
     }
 }
 
+
 const cancelBookingRooms = async (req, res) => {
     try {
         const { bookingID } = req.body;
